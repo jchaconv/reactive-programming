@@ -29,5 +29,14 @@ public class Util {
     }
     /* Fin Lec05 :: Use of Faker */
 
+    /* Inicio Lec09 :: Supplier Refactoring */
+    public static void sleepSeconds(int seconds) {
+        try {
+            Thread.sleep(seconds * 1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /* Fin Lec09 :: Supplier Refactoring */
 
 }

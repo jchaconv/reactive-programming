@@ -1,4 +1,4 @@
-package pe.com.reactive.sec01;
+package pe.com.reactive.sec01Mono;
 
 import reactor.core.publisher.Mono;
 
