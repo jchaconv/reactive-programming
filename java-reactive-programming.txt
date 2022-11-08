@@ -1,0 +1,201 @@
+
+Traditional Thread | Request Programming |Request in Microservices
+------------------------------------------------------------------
+Este tipo de programación tradicional se basa en 
+I/O operations(programación síncrona) y genera varios threads por request.
+Por lo que NO es muy escalable para 
+soportar alta concurrencia. Aun cuando este tipo
+de arquitectura es llevada a la nube para usar auto-scaling
+no alcanza el potencial que ofrece la programación reactiva.
+
+
+Event-Driven Programming
+------------------------
+Basada en programación asíncrona
+Un solo thread tiene un loop de eventos donde procesa un evento y 
+hace una petición al server pero no espera la respuesta sino que sigue procesando
+los otros events.
+
+Reactive Streams Implementations: Akka, rxJava2, Reactor(Se verá en este curso)
+
+Topics Covered:
+--------------
+
+Reactive Streams                        
+                            
+Publishers                              
+    Mono                                
+    Flux                                
+                            
+Programmatically emitting items         
+    Flux create                         
+    Flux generate                       
+                            
+Operators                               
+    handle                              
+    do hooks/callbacks                  
+    limit rate                          
+    delay                               
+    timeout                             
+    on-error                            
+    transform                           
+    switch/default if empty             
+    flat map                            
+                            
+Hot & Cold Publishers                   
+    share                               
+    publish ref count                   
+    autoconnect                         
+    cache                               
+
+Schedulers
+    publishOn                                
+    subscribeOn                              
+    runOn/parallel                               
+    Various thread pools                                 
+
+Backpressure/Overflow Strategy                              
+    error                                
+    drop                                 
+    latest                               
+    buffer                               
+
+Combining Publishers                                 
+    merge                                
+    zip                              
+    concat                               
+    combineLatest
+
+batching
+    buffer
+    window
+    group
+
+repeat & retry
+
+sinks
+    sink-one
+    sink-unicate
+    sink-multi
+    sink-replay
+
+publisher context
+
+step-verifier - Unit Testing
+
+********************************************************************
+********************************************************************
+
+
+Terminologies:
+-------------
+
+Publisher
+    Source
+    Observable
+    Upstream
+    Producer
+
+Subscriber
+    Sink
+    Observer
+    Downstream
+    Consumer
+
+
+********************************************************************
+********************************************************************
+
+
+Reactor Publisher: Mono<T>, Flux<T>
+Mono: Emits 0 o 1 item
+Flux: Emits 0 or N item
+onComplete / onError
+
+
+********************************************************************
+********************************************************************
+
+
+Maven dependencies:
+------------------
+
+<dependencies>
+    <dependency>
+        <groupId>io.projectreactor</groupId>
+        <artifactId>reactor-core</artifactId>
+    </dependency>
+    <!-- test data -->
+    <dependency>
+        <groupId>com.github.javafaker</groupId>
+        <artifactId>javafaker</artifactId>
+        <version>1.0.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.16</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.projectreactor</groupId>
+        <artifactId>reactor-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.4.2</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+ 
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-bom</artifactId>
+            <version>2020.0.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+    </dependencies>
+</dependencyManagement>
+ 
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <release>11</release>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
+
+********************************************************************
+********************************************************************
+
+Subscriber
+
+    onNext - Consumer<T>
+    onError - Consumer<Throwable>
+    onComplete - Runnable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
