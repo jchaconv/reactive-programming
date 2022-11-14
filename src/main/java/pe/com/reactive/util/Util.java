@@ -1,6 +1,7 @@
 package pe.com.reactive.util;
 
 import com.github.javafaker.Faker;
+import org.reactivestreams.Subscriber;
 
 import java.util.function.Consumer;
 
@@ -38,5 +39,15 @@ public class Util {
         }
     }
     /* Fin Lec09 :: Supplier Refactoring */
+
+    /* INICIO SECCION 3 - LEC01 - default subscriber implementation */
+    public static Subscriber<Object> subscriber() {
+        return new DefaultSubscriber();
+    }
+
+    public static Subscriber<Object> subscriber(String name) {
+        return new DefaultSubscriber(name);
+    }
+    /* FIN SECCION 3- LEC01 - default subscriber implementation */
 
 }
