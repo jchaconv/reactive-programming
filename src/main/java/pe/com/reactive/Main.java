@@ -1,10 +1,15 @@
 package pe.com.reactive;
 
-public class Main {
+public class Main  implements Runnable {
 
     public static void main(String[] args) {
 
-        System.out.println("Hello world!");
+        new Thread(new Main()).start();
 
+    }
+
+    @Override
+    public void run() {
+        System.out.println("Hola Cris!");
     }
 }

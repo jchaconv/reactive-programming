@@ -187,6 +187,21 @@ Subscriber
 
 
 
+Schedulers:
+- boundedElastic : Network. 10 veces el número de cpu's. 10 core cpu's -> 40 threads
+Si no estoy seguro cuántos serán necesarios, usar esta opción.
+
+- parallel       : CPU intensive tasks. Para pocos threads. 4 core cpu's -> 4 threads
+- single         : Single dedicated thread
+- immediate      : Current thread
+
+Operators for Scheduling:
+- subscribeOn : upstream -> Se crea un scheduler thread donde se prioriza el subscribeOn como
+"publisher" del subscriber
+- publishOn   : downstream
+
+
+
 
 
 
