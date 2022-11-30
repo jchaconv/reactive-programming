@@ -19,7 +19,9 @@ public class Lec02SubscribeOnDemo {
         Flux<Object> flux = Flux.create(fluxSink -> {
             printThreadName("create");
             fluxSink.next(1);
-        }).doOnNext(i -> printThreadName("next " + i));
+        }) //Vemos que el subscribeOn más cerca al publisher(Ln23) toma precedencia
+        .subscribeOn(Schedulers.newParallel("jchaconv")) //Se agrega para ver cuál toma (Ln23 o Ln34)
+        .doOnNext(i -> printThreadName("next " + i));
 
         /* Primer ejemplo:
         flux.doFirst( () -> printThreadName("first2") )
