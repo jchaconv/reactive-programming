@@ -32,13 +32,28 @@ public class Util {
 
     /* Inicio Lec09 :: Supplier Refactoring */
     public static void sleepSeconds(int seconds) {
+        /* Inicio Sec07-Lec01 :: Demo
         try {
             Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        /* Fin Sec07-Lec01 :: Demo */
+        /* Inicio Sec07-Lec01 :: Demo */
+        sleepMillis(seconds * 1000);
+        /* Fin Sec07-Lec01 :: Demo */
     }
     /* Fin Lec09 :: Supplier Refactoring */
+
+    /* Inicio Sec07-Lec01 :: Demo */
+    public static void sleepMillis(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    /* Fin Sec07-Lec01 :: Demo */
 
     /* INICIO SECCION 3 - LEC01 - default subscriber implementation */
     public static Subscriber<Object> subscriber() {

@@ -201,7 +201,23 @@ Operators for Scheduling:
 - publishOn   : downstream
 
 
+BACKPRESSURE / OVERFLOW STRATEGY:
+-----------------
+Es un mecanismo que indica al producer que la "emisión de items" es muy alta
+y el consuming del subscriber muy lento y como manejar esa carga.
 
+buffer: keep in memory
+drop: Once the queue is full, new items will be dropped
+latest: Once the queue is full, keep 1 latest item as and when it arrives. drop old
+error: throw error to the downstream
+
+DROP vs Latest
+
+En drop se descartan los items cuando
+la queue está llena y el subscriber es muy lento para procesar todos los items.
+
+En latest se guarda el último emitido en memoria y si no se libera espacio en la queue
+es descartado, luego llega otro item y pasa a ser el nuevo latest y así sucesivamente.
 
 
 
