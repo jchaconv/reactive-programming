@@ -2,7 +2,6 @@ package pe.com.reactive.sec07Backpressure;
 
 import pe.com.reactive.util.Util;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.FluxSink;
 import reactor.core.scheduler.Schedulers;
 
 public class Lec06BufferWithSize {
